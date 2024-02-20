@@ -28,17 +28,18 @@ import {
     ChipProps,
     SortDescriptor
 } from "@nextui-org/react";
-import {PlusIcon} from "./icons/Plusicon";
-import {VerticalDotsIcon} from "./icons/VerticalDotIcons";
-import {ChevronDownIcon} from "./icons/ChevronDownIcon";
-import {SearchIcon} from "./icons/SearchIcon";
-import {columns, users, statusOptions} from "./data";
-import {capitalize} from "./utils";
+import {PlusIcon} from "@@/app/(routes)/announcements/icons/Plusicon";
+import {VerticalDotsIcon} from "@@/app/(routes)/announcements/icons/VerticalDotIcons";
+import {ChevronDownIcon} from "@@/app/(routes)/announcements/icons/ChevronDownIcon";
+import {SearchIcon} from "@@/app/(routes)/announcements/icons/SearchIcon";
+import {columns, users, statusOptions} from "@@/app/(routes)/announcements/data";
+import {capitalize} from "@@/app/(routes)/announcements/utils";
 
 import {AnnouncementDelete} from "@@/app/(routes)/announcements/UI/announcementDelete";
 import Edit from "@@/app/(routes)/announcements/UI/edit";
 import {IAnnouncement} from "@@/app/(routes)/announcements/interface/announcement.interface";
 import {useAnnoncuments} from "@@/store/useAnnouncement";
+import View from "@@/app/(routes)/announcements/UI/view";
 
 
 const statusColorMap: Record<string, ChipProps["color"]> = {
@@ -66,7 +67,7 @@ type User = typeof users[0];
 
     const [deleteUser, setDeleteUser] = React.useState(false)
     const [getName, setGetName] = React.useState("")
-
+     const [view, setView] = React.useState(false)
     function  getIdAnnouncements(name:string){
         setGetName(name)
         setDeleteUser(!deleteUser)
@@ -80,6 +81,14 @@ type User = typeof users[0];
         annoncuments(user)
 
     }
+
+     function isOpenView(user:User) {
+
+         annoncuments(user)
+         setView(!view)
+
+
+     }
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const [editUser, setEditUser] = React.useState(false)
@@ -138,17 +147,17 @@ type User = typeof users[0];
                 return (
                     <User
                         avatarProps={{radius: "lg", src: user.avatar}}
-                        description={user.email}
+
                         name={cellValue}
                     >
-                        {user.email}
+
                     </User>
                 );
             case "role":
                 return (
                     <div className="flex flex-col">
                         <p className="text-bold text-small capitalize">{cellValue}</p>
-                        <p className="text-bold text-tiny capitalize text-default-400">{user.team}</p>
+
                     </div>
                 );
             case "status":
@@ -168,7 +177,7 @@ type User = typeof users[0];
                                 </Button>
                             </DropdownTrigger>
                             <DropdownMenu>
-                                <DropdownItem >View</DropdownItem>
+                                <DropdownItem onClick={() => isOpenView(user)}>View</DropdownItem>
                                 <DropdownItem onClick={() => isOpenEdit(user)}>Edit</DropdownItem>
                                 <DropdownItem onClick={() => getIdAnnouncements(user.name)}>Delete</DropdownItem>
                             </DropdownMenu>
@@ -370,16 +379,23 @@ type User = typeof users[0];
 
 
             <Drawer onClose={onClose} isOpen={isOpen} size={"lg"}>
-                <Edit />
+                <Edit/>
             </Drawer>
 
+            <div className={
+                view ? "transition-transform translate-y-[0%] w-full h-[100vh]  bg-white shadow-2xl fixed top-0 left-0 z-[99999]"
+                    :
+                    "transition-transform translate-y-[-120%] w-full h-[100vh]  bg-white shadow-2xl fixed top-0 left-0 z-[99999]"
+            }>
 
+                {view ? <View onClose={setView}/> : ""}
+
+            </div>
 
             {deleteUser ? <AnnouncementDelete deleteAnnouncement={setDeleteUser} announcementName={getName}/> : ""}
         </>
     );
-}
+ }
 
 
-
-export  default  CategoriesDetail
+export default CategoriesDetail

@@ -65,7 +65,7 @@ export default function App() {
     const [deleteUser, setDeleteUser] = React.useState(false)
     const [getName, setGetName] = React.useState("")
     const [view, setView] = React.useState(false)
-    const [placement,] = React.useState('top')
+
 
     // No library
     function  getIdAnnouncements(name:string){
