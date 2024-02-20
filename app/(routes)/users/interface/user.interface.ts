@@ -1,5 +1,5 @@
 
-export  interface addressForm {
+interface addressForm {
         id: number,
         regionId: number,
         districtId: number,

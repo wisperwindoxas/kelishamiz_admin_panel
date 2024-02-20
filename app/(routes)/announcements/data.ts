@@ -2,9 +2,8 @@ import React from "react";
 const columns = [
   {name: "ID", uid: "id", sortable: true},
   {name: "NAME", uid: "name", sortable: true},
-  {name: "AGE", uid: "age", sortable: true},
-  {name: "ROLE", uid: "role", sortable: true},
-
+  {name: "NARXI", uid: "price", sortable: true},
+  {name: "Foydalanyuvchi", uid: "user", sortable: true},
   {name: "STATUS", uid: "status", sortable: true},
   {name: "ACTIONS", uid: "actions"},
 ];
@@ -19,8 +18,8 @@ const users = [
   {
     id: 1,
     name: "Стиральная машина автомат Beko WSPE6H616, 6.5 кг, 1200 об/мин, Inverter",
+    price:"500$",
     status: "active",
-    age: "29",
     avatar: "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
     images: [
       "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
@@ -34,8 +33,9 @@ const users = [
   {
     id: 2,
     name: "Игровая консоль Sony PlayStation 5, Blu-ray/DVD",
+    price:"500$",
     status: "active",
-    age: "29",
+
     avatar: "https://images.uzum.uz/ckk5o4cjvf2peh8sjehg/original.jpg",
     images: [
       "https://images.uzum.uz/cm4ig6p25ku1lubq90f0/original.jpg",
@@ -49,8 +49,8 @@ const users = [
   {
     id: 3,
     name: "Стиральная машина автомат Beko WSPE6H616, 6.5 кг, 1200 об/мин, Inverter",
+    price:"500$",
     status: "active",
-    age: "29",
     avatar: "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
     images: [
       "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
@@ -64,8 +64,9 @@ const users = [
   {
     id: 4,
     name: "Стиральная машина автомат Beko WSPE6H616, 6.5 кг, 1200 об/мин, Inverter",
+    price:"500$",
     status: "active",
-    age: "29",
+
     avatar: "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
     images: [
       "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
@@ -79,8 +80,8 @@ const users = [
   {
     id: 5,
     name: "Стиральная машина автомат Beko WSPE6H616, 6.5 кг, 1200 об/мин, Inverter",
+    price:"500$",
     status: "active",
-    age: "29",
     avatar: "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
     images: [
       "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
@@ -94,8 +95,9 @@ const users = [
   {
     id: 6,
     name: "Стиральная машина автомат Beko WSPE6H616, 6.5 кг, 1200 об/мин, Inverter",
+    price:"500$",
     status: "active",
-    age: "29",
+
     avatar: "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
     images: [
       "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
@@ -110,8 +112,9 @@ const users = [
   {
     id: 7,
     name: "Стиральная машина автомат Beko WSPE6H616, 6.5 кг, 1200 об/мин, Inverter",
+    price:"500$",
     status: "active",
-    age: "29",
+
     avatar: "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
     images: [
       "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
@@ -125,8 +128,8 @@ const users = [
   {
     id: 8,
     name: "Стиральная машина автомат Beko WSPE6H616, 6.5 кг, 1200 об/мин, Inverter",
+    price:"500$",
     status: "active",
-    age: "29",
     avatar: "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
     images: [
       "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
@@ -141,8 +144,8 @@ const users = [
   {
     id: 9,
     name: "Стиральная машина автомат Beko WSPE6H616, 6.5 кг, 1200 об/мин, Inverter",
+    price:"500$",
     status: "active",
-    age: "29",
     avatar: "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
     images: [
       "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
@@ -156,8 +159,8 @@ const users = [
   {
     id: 10,
     name: "Стиральная машина автомат Beko WSPE6H616, 6.5 кг, 1200 об/мин, Inverter",
+    price:"500$",
     status: "active",
-    age: "29",
     avatar: "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
     images: [
       "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
@@ -171,8 +174,8 @@ const users = [
   {
     id: 11,
     name: "Стиральная машина автомат Beko WSPE6H616, 6.5 кг, 1200 об/мин, Inverter",
+    price:"500$",
     status: "active",
-    age: "29",
     avatar: "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
     images: [
       "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
@@ -186,8 +189,8 @@ const users = [
   {
     id: 12,
     name: "Стиральная машина автомат Beko WSPE6H616, 6.5 кг, 1200 об/мин, Inverter",
+    price:"500$",
     status: "active",
-    age: "29",
     avatar: "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",
     images: [
       "https://images.uzum.uz/cn1l7t9s99ouqbfthkd0/original.jpg",

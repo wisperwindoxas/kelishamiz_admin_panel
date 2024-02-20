@@ -53,9 +53,9 @@ const statusColorMap: Record<string, ChipProps["color"]> = {
   vacation: "warning",
 };
 
-const INITIAL_VISIBLE_COLUMNS = ["name", "role", "age", "email","username", "actions"];
+const INITIAL_VISIBLE_COLUMNS = ["name", "email","username", "actions"];
 
-type User = typeof users[1];
+type User = typeof users[0];
 
 export default function UserPage() {
 
@@ -144,7 +144,7 @@ export default function UserPage() {
 
 
 
-  const renderCell = React.useCallback((user: User, columnKey: React.Key) => {
+  const renderCell = React.useCallback((user: User, columnKey: React.Key):Element |string |number | any => {
     const cellValue = user[columnKey as keyof User];
 
     switch (columnKey) {
@@ -158,17 +158,8 @@ export default function UserPage() {
             {user.email}
           </User>
         );
-      case "age":
-        return (
-            <p className={""}>{user.birthDate.split("-").join(".")}</p>
-        );
-      case "role":
-        return (
-          <div className="flex flex-col">
-            <p className="text-bold text-small capitalize">+{user.phone}</p>
-            <p className="text-bold text-tiny capitalize text-default-400">{user.addressForm.address}</p>
-          </div>
-        );
+
+
       case "status":
         return (
           <Chip className="capitalize" color={statusColorMap[user.email]} size="sm" variant="flat">
