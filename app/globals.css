@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navbar a{
+    @apply hover:bg-blue-500; 
+}
+
+
+
+body{
+    background: #f1f5f9;
+}
+
+.main{
+    width: calc(100% - 300px);
+    position: absolute;
+    right: 0;
+    top: 70px;
+    background: #f1f5f9;
+    height: auto;
+    padding: 10px;
+    margin-bottom: 200px;
+}
+
+
+
+.announ_img img{
+    @apply hover:cursor-pointer
+}
