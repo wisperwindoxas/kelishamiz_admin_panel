@@ -4,15 +4,14 @@ import React, {Dispatch, SetStateAction} from "react";
 import {useAnnoncuments} from "@@/store/useAnnouncement";
 import Image from "next/image";
 import {AiFillEdit, AiOutlineClose} from "react-icons/ai";
-import {IAnnouncement} from "@@/app/(routes)/announcements/interface/announcement.interface";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 type ContainerProps = {
     onClose: Dispatch<SetStateAction<boolean>>;
 };
-const  View:React.FunctionComponent<ContainerProps> = ({onClose}) => {
+const View: React.FunctionComponent<ContainerProps> = ({onClose}) => {
 
     const {announcements} = useAnnoncuments(state => state.annoncuments)
-
 
 
     const [photoProduct, setPhotoProduct] = React.useState(announcements.images[0])
@@ -25,9 +24,9 @@ const  View:React.FunctionComponent<ContainerProps> = ({onClose}) => {
                 <div className={"flex  w-full h-full p-4"}>
                     <div className={"flex items-start h-full"}>
                         <div className={"announ_img grid grid-cols-1 gap-3 px-6 h-[60vh]"}>
-                            {announcements.images.map((item:string[]) =>
+                            {announcements.images.map((item: string | StaticImport, index:number) =>
                                 <Image
-                                    key={item}
+                                    key={index}
                                     onClick={() => setPhotoProduct(item)}
                                     className={"rounded-2xl"}
                                     src={item}
