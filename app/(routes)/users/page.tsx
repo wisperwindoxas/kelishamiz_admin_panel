@@ -2,11 +2,6 @@
 
 import {
   Drawer,
-  DrawerBody,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
   useDisclosure,
 } from '@chakra-ui/react'
 
@@ -35,7 +30,7 @@ import {PlusIcon} from "./icons/Plusicon";
 import {VerticalDotsIcon} from "./icons/VerticalDotIcons";
 import {ChevronDownIcon} from "./icons/ChevronDownIcon";
 import {SearchIcon} from "./icons/SearchIcon";
-import {columns, users, statusOptions} from "./data";
+import {columns, statusOptions} from "./data";
 import {capitalize} from "./utils";
 import {DeleteUser} from "@@/app/(routes)/users/UI/deleteUser";
 
@@ -44,7 +39,6 @@ import {useUser} from "@@/store/useUser";
 import {IUser} from "@@/app/(routes)/users/interface/user.interface";
 import EditUser from "@@/app/(routes)/users/UI/editUser";
 import ViewUser from "@@/app/(routes)/users/UI/view";
-import View from "@@/app/(routes)/announcements/UI/view";
 
 
 const statusColorMap: Record<string, ChipProps["color"]> = {
@@ -53,9 +47,48 @@ const statusColorMap: Record<string, ChipProps["color"]> = {
   vacation: "warning",
 };
 
-const INITIAL_VISIBLE_COLUMNS = ["name", "email","username", "actions"];
 
-type User = typeof users[0];
+
+const data:IUser[]= [
+  {
+    firstName: " Xurshid",
+    lastName: "Soatov",
+    secondName: "Xusan O'gli",
+    birthDate: "1994-02-21",
+    username: "windoxas",
+    password: "5hspkfn9",
+    phone: "998332575767",
+    email: "windoxas@gmail.com",
+    authorityId: 12,
+    addressForm: {
+      id: 1,
+      regionId: 2,
+      districtId: 4,
+      address: "Kumkurgan"
+    }
+  },
+  {
+    firstName: " Xurshid",
+    lastName: "Soatov",
+    secondName: "Xusan O'gli",
+    birthDate: "1994-02-21",
+    username: "windoxas",
+    password: "5hspkfn9",
+    phone: "998332575767",
+    email: "windoxas@gmail.com",
+    authorityId: 12,
+    addressForm: {
+      id: 2,
+      regionId: 2,
+      districtId: 4,
+      address: "Kumkurgan"
+    }
+  },
+]
+
+const INITIAL_VISIBLE_COLUMNS = ["name", "email","username","phone","age", "actions"];
+
+type User = typeof data[0];
 
 export default function UserPage() {
 
@@ -105,7 +138,7 @@ export default function UserPage() {
   }, [visibleColumns]);
 
   const filteredItems = React.useMemo(() => {
-    let filteredUsers = [...users];
+    let filteredUsers = [...data];
 
     if (hasSearchFilter) {
       filteredUsers = filteredUsers.filter((user) =>
@@ -119,7 +152,7 @@ export default function UserPage() {
     }
 
     return filteredUsers;
-  }, [users, filterValue, statusFilter]);
+  }, [data, filterValue, statusFilter]);
 
   const pages = Math.ceil(filteredItems.length / rowsPerPage);
 
@@ -157,6 +190,12 @@ export default function UserPage() {
           >
             {user.email}
           </User>
+        );
+
+
+      case "age":
+        return (
+          <p>{user.birthDate}</p>
         );
 
 
@@ -262,7 +301,7 @@ export default function UserPage() {
           </div>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-black font-bold text-small">Jami {users.length} foydalanuvchi</span>
+          <span className="text-black font-bold text-small">Jami {data.length} foydalanuvchi</span>
           <label className="flex items-center text-default-400 text-small">
             Rows per page:
             <select
@@ -284,7 +323,7 @@ export default function UserPage() {
     visibleColumns,
     onSearchChange,
     onRowsPerPageChange,
-    users.length,
+    data.length,
     hasSearchFilter,
   ]);
 

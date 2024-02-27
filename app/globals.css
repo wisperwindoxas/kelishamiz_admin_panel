@@ -38,3 +38,8 @@ body{
 .user_info_view h2 span{
     @apply font-bold mr-3
 }
+
+.categ_inp input{
+        @apply border p-2 rounded-xl w-[300px]
+
+}

@@ -1,16 +1,25 @@
 'use client'
 import React from "react";
 import {categoriesMenu} from "@@/app/(routes)/categories/data";
-import Image from "next/image";
-import { FaHeart } from "react-icons/fa";
 import Link from "next/link";
+import {FiPlusCircle} from "react-icons/fi";
+import AddCateg from "@@/app/(routes)/categories/UI/addCateg";
+
 
 export default function Categories() {
+        const [showAddCateg,  setShowAddCateg] = React.useState(false)
+
+
+
+
     return (
         <>
-            <h1 className={"text-3xl font-bold text-gray-600 p-6"}>Kategoriyalar</h1>
+            <div className={"flex justify-between px-5 py-6"}>
+                <h1 className={"text-3xl font-bold text-gray-600 "}>Kategoriyalar</h1>
+                <button onClick={() => setShowAddCateg(!showAddCateg)} className={"addCateg flex items-center bg-blue-700 gap-2 px-5 py-2 text-white font-bold rounded-md "}>< FiPlusCircle /> Add Categories </button>
+            </div>
 
-         <div   className="grid  grid-cols-5 justify-items-center gap-3 p-6">
+            <div className="grid  grid-cols-5 justify-items-center gap-3 p-6">
              {categoriesMenu.map(item => {
                  return (
                      // eslint-disable-next-line react/jsx-key
@@ -41,8 +50,17 @@ export default function Categories() {
                      </Link>
                  )
              })}
+
+
          </div>
 
+
+            <div
+                className={showAddCateg ?
+                "w-full h-[80vh] bg-white shadow-2xl transition-transform translate-y-[0%] fixed bottom-0 left-0 z-[999988]"
+                : "w-full h-[0vh] translate-y-[120%] transition-transform fixed bottom-0 left-0 z-[999988]"}>
+                <AddCateg closeShow={setShowAddCateg}/>
+            </div>
         </>
     );
 }
